@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dunk'N Dogs Mobile Grooming · Seymour, CT</title>
+<meta name="description" content="Calm, cage-free, one-on-one mobile dog grooming in your driveway. Serving Seymour, the Naugatuck Valley, Fairfield County and northern Westchester.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#25402d; --forest-2:#1a2e20; --moss:#47704c;
+  --cream:#f4ecdc; --paper:#fbf7ef; --sand:#e9dcc3;
+  --gold:#b88a2e; --gold-2:#d8b264;
+  --ink:#1d1a15; --ink-2:#4a443a; --blush:#e9a9a6;
+  --display:'Gloock', Georgia, serif;
+  --script:'Instrument Serif', Georgia, serif;
+  --body:'Figtree', system-ui, sans-serif;
+  --r:28px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+em,.it{font-family:var(--script);font-style:italic;font-weight:400}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+h2{font-size:clamp(40px,5.4vw,76px);text-wrap:balance}
+h2 em{color:var(--gold);font-size:1.08em;letter-spacing:0}
+p{text-wrap:pretty}
+.wrap{width:min(1280px,92vw);margin:0 auto}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--moss);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;font-weight:600;font-size:15px;letter-spacing:.02em;transition:transform .25s,background .25s,color .25s,box-shadow .25s}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 10px 30px -10px rgba(184,138,46,.7)}
+.btn-gold:hover{background:var(--forest);transform:translateY(-2px)}
+.btn-line{border:1.5px solid currentColor}
+.btn-line:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn .arr{transition:transform .25s}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* ===== top bar + nav ===== */
+.topbar{background:var(--forest-2);color:var(--cream);font-size:13px;letter-spacing:.04em}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:40px;gap:20px}
+.topbar .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#7fc28a;margin-right:8px;box-shadow:0 0 0 4px rgba(127,194,138,.18)}
+.topbar .dot.off{background:var(--gold-2);box-shadow:0 0 0 4px rgba(216,178,100,.18)}
+.topbar a:hover{color:var(--gold-2)}
+.topbar .tb-r{display:flex;gap:22px}
+nav.main{position:sticky;top:0;z-index:50;background:rgba(251,247,239,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+nav.main.scrolled{border-color:rgba(29,26,21,.08);box-shadow:0 8px 30px -20px rgba(0,0,0,.25)}
+nav.main .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:58px;height:58px;border-radius:50%;box-shadow:0 0 0 2px var(--paper),0 0 0 3px var(--gold-2)}
+.brand b{font-family:var(--display);font-weight:400;font-size:26px;display:block;line-height:1}
+.brand small{font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-2);font-weight:600}
+.links{display:flex;gap:34px;font-size:15px;font-weight:500}
+.links a{position:relative;padding:6px 0}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.links a:hover::after,.links a.act::after{transform:scaleX(1)}
+.nav-cta{display:flex;align-items:center;gap:18px}
+.nav-cta .tel{font-weight:600;font-size:15px}
+.burger{display:none;width:46px;height:46px;border-radius:50%;background:var(--forest);color:var(--cream);align-items:center;justify-content:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:1.5px;background:currentColor;position:relative;transition:.3s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.drawer{position:fixed;inset:0;z-index:80;background:var(--forest);color:var(--cream);padding:110px 8vw 40px;display:flex;flex-direction:column;gap:6px;transform:translateY(-100%);transition:transform .6s cubic-bezier(.7,0,.2,1)}
+.drawer.open{transform:none}
+.drawer a{font-family:var(--display);font-size:44px;line-height:1.25}
+.drawer .x{position:absolute;top:22px;right:6vw;width:46px;height:46px;border-radius:50%;border:1px solid rgba(244,236,220,.4);font-size:22px}
+
+/* ===== hero ===== */
+.hero{position:relative;padding:56px 0 90px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(54px,7.6vw,118px);line-height:.94;letter-spacing:-.02em}
+.hero h1 em{color:var(--gold);display:inline-block;font-size:1.08em;letter-spacing:-.01em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln>span{display:inline-block;transform:translateY(105%);animation:up 1.1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.12s}.hero h1 .ln:nth-child(3)>span{animation-delay:.24s}
+@keyframes up{to{transform:none}}
+.hero .lede{font-size:20px;color:var(--ink-2);max-width:520px;margin:30px 0 38px}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.proof{display:flex;gap:34px;margin-top:52px;padding-top:28px;border-top:1px solid rgba(29,26,21,.12);max-width:560px}
+.proof div b{font-family:var(--display);font-weight:400;font-size:40px;line-height:1;display:block}
+.proof div span{font-size:13px;color:var(--ink-2);letter-spacing:.02em}
+.stars{color:var(--gold);letter-spacing:2px;font-size:15px}
+
+.arch{position:relative;justify-self:end;width:min(500px,100%);aspect-ratio:.8}
+.arch .frame{position:absolute;inset:0;border-radius:999px 999px var(--r) var(--r);overflow:hidden;background:var(--sand);box-shadow:0 40px 80px -40px rgba(37,64,45,.55)}
+.arch .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 1.4s ease,transform 6s ease}
+.arch .frame img.on{opacity:1;transform:scale(1)}
+.arch .outline{position:absolute;inset:-16px -16px 16px 16px;border:1.5px solid var(--gold-2);border-radius:999px 999px var(--r) var(--r);z-index:-1}
+.arch .crest{position:absolute;left:-70px;bottom:40px;width:170px;height:170px;border-radius:50%;box-shadow:0 0 0 8px var(--paper),0 24px 50px -20px rgba(0,0,0,.4);animation:bob 6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px) rotate(-3deg)}}
+.arch .spin{position:absolute;right:-46px;top:46px;width:132px;height:132px;animation:spin 22s linear infinite}
+.arch .spin text{font-family:var(--body);font-size:10.4px;font-weight:700;letter-spacing:.32em;fill:var(--forest);text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+.arch .spin-c{position:absolute;right:-46px;top:46px;width:132px;height:132px;display:grid;place-items:center;font-family:var(--script);font-style:italic;font-size:30px;color:var(--gold)}
+.pips{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:3}
+.pips i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);transition:.3s;cursor:pointer}
+.pips i.on{background:#fff;width:26px;border-radius:6px}
+.hero-blob{position:absolute;right:-12vw;top:-10vw;width:56vw;height:56vw;border-radius:50%;background:radial-gradient(closest-side,var(--cream),transparent);z-index:-1}
+
+/* ===== ribbon ===== */
+.ribbon{background:var(--forest);color:var(--cream);padding:22px 0;overflow:hidden;white-space:nowrap;transform:rotate(-1.2deg);margin:0 -2vw;box-shadow:0 20px 40px -30px rgba(0,0,0,.5)}
+.ribbon .track{display:inline-flex;gap:46px;animation:mq 38s linear infinite;font-family:var(--display);font-size:30px}
+.ribbon .track span{display:inline-flex;align-items:center;gap:46px}
+.ribbon .track span::after{content:"✦";color:var(--gold-2);font-size:18px}
+.ribbon .track em{color:var(--gold-2);font-size:34px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ===== why mobile ===== */
+.why{padding:150px 0 120px}
+.why .head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:80px}
+.why .head p{font-size:19px;color:var(--ink-2);max-width:520px}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.pillar{position:relative;border-radius:var(--r);overflow:hidden;background:var(--cream);display:flex;flex-direction:column}
+.pillar .ph{aspect-ratio:4/3.4;overflow:hidden}
+.pillar .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.pillar:hover .ph img{transform:scale(1.06)}
+.pillar .tx{padding:30px 32px 36px}
+.pillar .n{font-family:var(--script);font-style:italic;color:var(--gold);font-size:22px}
+.pillar h3{font-size:32px;margin:6px 0 12px}
+.pillar p{color:var(--ink-2);font-size:16px}
+.pillar:nth-child(2){transform:translateY(48px)}
+
+/* ===== services ===== */
+.services{background:var(--forest);color:var(--cream);padding:140px 0;position:relative;overflow:hidden}
+.services .eyebrow{color:var(--gold-2)}
+.services h2 em{color:var(--gold-2)}
+.svc-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;margin-top:70px;align-items:start}
+.svc-photo{position:sticky;top:120px;aspect-ratio:.82;border-radius:999px 999px var(--r) var(--r);overflow:hidden;background:var(--forest-2)}
+.svc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s}
+.svc-photo img.on{opacity:1}
+.svc-photo .tag{position:absolute;left:24px;bottom:24px;right:24px;background:rgba(26,46,32,.78);backdrop-filter:blur(8px);border-radius:18px;padding:16px 20px;font-size:14px;color:var(--cream);display:flex;justify-content:space-between;align-items:center}
+.svc-photo .tag b{font-family:var(--display);font-weight:400;font-size:22px}
+.menu-list{list-style:none;border-top:1px solid rgba(244,236,220,.18)}
+.menu-item{border-bottom:1px solid rgba(244,236,220,.18);padding:28px 4px;display:grid;grid-template-columns:56px 1fr auto;gap:18px;align-items:center;cursor:pointer;transition:padding .3s}
+.menu-item .no{font-family:var(--script);font-style:italic;font-size:22px;color:var(--gold-2)}
+.menu-item h3{font-size:clamp(28px,3vw,40px);transition:color .3s,transform .4s}
+.menu-item p{grid-column:2/4;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s,opacity .5s,margin .5s;color:rgba(244,236,220,.78);font-size:16px;max-width:520px}
+.menu-item .pick{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(244,236,220,.4);display:grid;place-items:center;font-size:20px;transition:.3s;flex-shrink:0}
+.menu-item:hover h3,.menu-item.open h3{color:var(--gold-2);transform:translateX(6px)}
+.menu-item.open p{max-height:140px;opacity:1;margin-top:10px}
+.menu-item.sel .pick{background:var(--gold-2);border-color:var(--gold-2);color:var(--forest-2)}
+.svc-foot{margin-top:40px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:space-between;background:rgba(244,236,220,.06);border:1px solid rgba(244,236,220,.14);border-radius:22px;padding:22px 26px}
+.svc-foot .q{font-size:15px;color:rgba(244,236,220,.8);max-width:380px}
+.svc-foot .q b{color:var(--cream);font-weight:600}
+.svc-foot .chosen{font-family:var(--display);font-size:20px;color:var(--gold-2)}
+.services .deco{position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;border:1.5px solid rgba(216,178,100,.2)}
+.services .deco::after{content:"";position:absolute;inset:40px;border-radius:50%;border:1.5px solid rgba(216,178,100,.12)}
+
+/* ===== gallery ===== */
+.gallery{padding:140px 0 120px;overflow:hidden}
+.gallery .head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:56px}
+.gallery .head p{max-width:400px;color:var(--ink-2)}
+.g-ctrl{display:flex;gap:10px}
+.g-ctrl button{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--ink);font-size:20px;transition:.25s}
+.g-ctrl button:hover{background:var(--ink);color:var(--paper)}
+.strip{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 4vw 30px calc((100vw - min(1280px,92vw))/2);scrollbar-width:none;cursor:grab}
+.strip::-webkit-scrollbar{display:none}
+.strip.drag{cursor:grabbing;scroll-snap-type:none}
+.shot{flex:0 0 auto;width:min(330px,72vw);aspect-ratio:3/4;border-radius:22px;overflow:hidden;scroll-snap-align:start;position:relative;background:var(--sand)}
+.shot:nth-child(3n+2){margin-top:46px}
+.shot:nth-child(4n){border-radius:999px 999px 22px 22px}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1);pointer-events:none;user-select:none}
+.shot:hover img{transform:scale(1.05)}
+.shot::after{content:"＋";position:absolute;right:16px;top:16px;width:40px;height:40px;border-radius:50%;background:rgba(251,247,239,.9);display:grid;place-items:center;font-size:18px;opacity:0;transform:scale(.7);transition:.3s}
+.shot:hover::after{opacity:1;transform:none}
+.g-note{display:flex;justify-content:space-between;align-items:center;margin-top:24px;font-size:14px;color:var(--ink-2);gap:20px;flex-wrap:wrap}
+.g-note a{font-weight:600;border-bottom:1.5px solid var(--gold);padding-bottom:2px}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(18,26,20,.92);display:none;align-items:center;justify-content:center;padding:4vh 4vw}
+.lb.open{display:flex;animation:fade .3s}
+@keyframes fade{from{opacity:0}}
+.lb img{max-height:88vh;max-width:88vw;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lb button{position:absolute;color:var(--cream);width:56px;height:56px;border-radius:50%;border:1px solid rgba(244,236,220,.35);font-size:22px}
+.lb .lx{top:24px;right:24px}.lb .lp{left:24px;top:50%}.lb .ln2{right:24px;top:50%}
+
+/* ===== ryan ===== */
+.ryan{background:var(--cream);padding:140px 0;position:relative}
+.ryan .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:90px;align-items:center}
+.ryan .pics{position:relative;aspect-ratio:1/1.08}
+.ryan .pics .a{position:absolute;left:0;top:0;width:76%;height:82%;border-radius:var(--r);overflow:hidden}
+.ryan .pics .b{position:absolute;right:0;bottom:0;width:48%;height:54%;border-radius:999px 999px var(--r) var(--r);overflow:hidden;box-shadow:0 0 0 10px var(--cream)}
+.ryan .pics img{width:100%;height:100%;object-fit:cover}
+.ryan .pics .yrs{position:absolute;left:-30px;bottom:30px;background:var(--forest);color:var(--cream);border-radius:50%;width:150px;height:150px;display:grid;place-items:center;text-align:center;line-height:1.1;box-shadow:0 20px 40px -18px rgba(0,0,0,.5)}
+.ryan .pics .yrs b{font-family:var(--display);font-weight:400;font-size:46px;display:block;color:var(--gold-2)}
+.ryan .pics .yrs span{font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.ryan .hello{font-family:var(--script);font-style:italic;font-size:34px;color:var(--gold);margin:18px 0 6px}
+.ryan h2{font-size:clamp(38px,4.4vw,62px)}
+.ryan .body p{color:var(--ink-2);margin-top:20px;font-size:17.5px}
+.ryan blockquote{margin-top:34px;padding:28px 0 0;border-top:1px solid rgba(29,26,21,.15);font-family:var(--display);font-size:clamp(22px,2.1vw,28px);line-height:1.3;color:var(--forest)}
+.ryan .sig{margin-top:14px;font-size:14px;font-weight:600;letter-spacing:.06em;color:var(--ink-2)}
+.ryan .sig em{font-size:26px;color:var(--gold);letter-spacing:0;margin-right:10px}
+
+/* ===== pack ===== */
+.pack{padding:140px 0}
+.pack .top{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end}
+.pack .top p{color:var(--ink-2);font-size:18px;max-width:500px}
+.pack .stage{margin-top:60px;display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:stretch}
+.pack .photo{border-radius:var(--r);overflow:hidden;position:relative;min-height:480px}
+.pack .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pack .photo .cap{position:absolute;left:24px;bottom:24px;background:var(--paper);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600}
+.pup-card{background:var(--forest);color:var(--cream);border-radius:var(--r);padding:40px;display:flex;flex-direction:column}
+.pup-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}
+.pup-tabs button{padding:9px 16px;border-radius:999px;border:1px solid rgba(244,236,220,.3);font-size:14px;font-weight:500;transition:.25s}
+.pup-tabs button:hover{border-color:var(--gold-2)}
+.pup-tabs button.on{background:var(--gold-2);color:var(--forest-2);border-color:var(--gold-2)}
+.pup-body{flex:1;display:flex;flex-direction:column}
+.pup-body .breed{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-2);font-weight:600}
+.pup-body h3{font-size:64px;margin:8px 0 18px}
+.pup-body p{color:rgba(244,236,220,.85);font-size:17px}
+.pup-body .trait{margin-top:auto;padding-top:28px;font-family:var(--script);font-style:italic;font-size:26px;color:var(--gold-2)}
+.pup-body.swap{animation:swap .5s}
+@keyframes swap{from{opacity:0;transform:translateY(12px)}}
+.memory{margin-top:28px;border:1.5px solid var(--sand);border-radius:var(--r);padding:40px 48px;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;background:linear-gradient(90deg,var(--cream),var(--paper))}
+.memory .heart{width:84px;height:84px;border-radius:50%;background:var(--paper);display:grid;place-items:center;font-family:var(--script);font-style:italic;font-size:38px;color:var(--gold);box-shadow:0 0 0 1.5px var(--gold-2)}
+.memory h3{font-size:30px}
+.memory h3 em{color:var(--gold)}
+.memory p{color:var(--ink-2);margin-top:8px}
+
+/* ===== reviews ===== */
+.reviews{background:var(--forest-2);color:var(--cream);padding:140px 0;overflow:hidden;position:relative}
+.reviews .eyebrow{color:var(--gold-2)}
+.reviews h2 em{color:var(--gold-2)}
+.rv-top{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap}
+.score{display:flex;align-items:center;gap:22px}
+.score b{font-family:var(--display);font-weight:400;font-size:84px;line-height:1;color:var(--gold-2)}
+.score div{font-size:14px;color:rgba(244,236,220,.75)}
+.score .stars{font-size:20px;color:var(--gold-2)}
+.quote-stage{margin-top:70px;display:grid;grid-template-columns:1fr auto;gap:60px;align-items:end}
+.quote{min-height:280px}
+.quote blockquote{font-family:var(--display);font-size:clamp(28px,3.3vw,46px);line-height:1.16;text-wrap:pretty}
+.quote blockquote::before{content:"“";color:var(--gold-2);font-family:var(--script);font-size:1.6em;line-height:0;vertical-align:-.35em;margin-right:6px}
+.quote .who{margin-top:30px;display:flex;align-items:center;gap:16px;font-size:15px}
+.quote .who .av{width:48px;height:48px;border-radius:50%;background:var(--gold-2);color:var(--forest-2);display:grid;place-items:center;font-family:var(--display);font-size:20px}
+.quote .who small{display:block;color:rgba(244,236,220,.6);font-size:13px}
+.quote.swap{animation:swap .6s}
+.q-nav{display:flex;flex-direction:column;gap:18px;align-items:end}
+.q-dots{display:flex;gap:8px}
+.q-dots i{width:34px;height:3px;border-radius:2px;background:rgba(244,236,220,.22);cursor:pointer;overflow:hidden;position:relative}
+.q-dots i.on::after{content:"";position:absolute;inset:0;background:var(--gold-2);transform-origin:left;animation:prog 8s linear forwards}
+.q-dots i.done{background:rgba(216,178,100,.6)}
+@keyframes prog{from{transform:scaleX(0)}}
+.q-btns{display:flex;gap:10px}
+.q-btns button{width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(244,236,220,.4);font-size:20px;transition:.25s}
+.q-btns button:hover{background:var(--gold-2);color:var(--forest-2);border-color:var(--gold-2)}
+.reviews .bigq{position:absolute;right:-2vw;top:40px;font-family:var(--script);font-style:italic;font-size:520px;line-height:.8;color:rgba(216,178,100,.06);pointer-events:none}
+
+/* ===== area ===== */
+.area{padding:140px 0}
+.area .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:start}
+.area .intro p{color:var(--ink-2);font-size:18px;margin-top:24px}
+.checker{margin-top:38px;background:var(--cream);border-radius:22px;padding:24px}
+.checker label{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--moss)}
+.checker .field{display:flex;gap:10px;margin-top:12px}
+.checker input{flex:1;padding:16px 20px;border-radius:999px;border:1.5px solid rgba(29,26,21,.15);background:var(--paper);font:inherit;font-size:16px;outline:none;transition:border-color .2s}
+.checker input:focus{border-color:var(--gold)}
+.checker .res{margin-top:14px;font-size:15px;min-height:24px}
+.checker .res.yes{color:var(--moss);font-weight:600}
+.checker .res.maybe{color:var(--ink-2)}
+.regions{display:flex;flex-direction:column;gap:22px}
+.region{border-radius:var(--r);padding:34px 36px;background:var(--paper);border:1.5px solid var(--sand);transition:border-color .3s,background .3s}
+.region.home{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+.region .rh{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:18px}
+.region h3{font-size:30px}
+.region .ct{font-family:var(--script);font-style:italic;font-size:20px;color:var(--gold)}
+.region.home .ct{color:var(--gold-2)}
+.towns{display:flex;flex-wrap:wrap;gap:8px}
+.towns span{padding:7px 14px;border-radius:999px;font-size:14px;background:var(--cream);transition:.25s}
+.region.home .towns span{background:rgba(244,236,220,.1)}
+.towns span.base{background:var(--gold-2);color:var(--forest-2);font-weight:600}
+.towns span.hit{background:var(--gold);color:#fff;transform:scale(1.08)}
+
+/* ===== book ===== */
+.book{background:var(--cream);padding:140px 0;position:relative;overflow:hidden}
+.book .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}
+.book .side p{color:var(--ink-2);font-size:18px;margin-top:24px}
+.facts{margin-top:40px;display:grid;gap:14px}
+.fact{display:flex;gap:16px;align-items:center;font-size:16px}
+.fact i{width:42px;height:42px;border-radius:50%;background:var(--paper);display:grid;place-items:center;font-style:normal;color:var(--gold);font-size:16px;flex-shrink:0;box-shadow:inset 0 0 0 1.5px var(--sand)}
+.fact a{font-weight:600}
+.fact a:hover{color:var(--gold)}
+.hours{margin-top:40px;background:var(--paper);border-radius:22px;padding:26px 28px}
+.hours h4{font-family:var(--display);font-weight:400;font-size:24px;margin-bottom:14px}
+.hours ul{list-style:none}
+.hours li{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed rgba(29,26,21,.12);font-size:15px}
+.hours li:last-child{border:0}
+.hours li.closed span:last-child{color:rgba(29,26,21,.4)}
+.hours li.today{font-weight:700;color:var(--forest)}
+.hours li.today span:first-child::after{content:"Today";margin-left:10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:var(--gold-2);color:var(--forest-2);padding:2px 8px;border-radius:999px;vertical-align:2px}
+form.req{background:var(--paper);border-radius:32px;padding:48px;box-shadow:0 40px 80px -50px rgba(37,64,45,.5)}
+form.req h3{font-size:36px;margin-bottom:6px}
+form.req .sub{color:var(--ink-2);font-size:15px;margin-bottom:30px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.fld{display:flex;flex-direction:column;gap:7px}
+.fld.full{grid-column:1/-1}
+.fld label{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.fld input,.fld textarea,.fld select{font:inherit;font-size:16px;padding:14px 16px;border-radius:14px;border:1.5px solid rgba(29,26,21,.13);background:#fff;outline:none;transition:border-color .2s,box-shadow .2s;color:var(--ink)}
+.fld input:focus,.fld textarea:focus,.fld select:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(184,138,46,.12)}
+.fld textarea{min-height:110px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;padding:10px 16px;border-radius:999px;border:1.5px solid rgba(29,26,21,.15);font-size:14.5px;transition:.2s;user-select:none}
+.chips input:checked+span{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+.chips span:hover{border-color:var(--forest)}
+form.req .go{margin-top:26px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+form.req .go small{color:var(--ink-2);font-size:13px;max-width:280px}
+.sent{display:none;text-align:center;padding:30px 10px}
+.sent.on{display:block;animation:swap .6s}
+.sent .tick{width:84px;height:84px;margin:0 auto 20px;border-radius:50%;background:var(--forest);color:var(--gold-2);display:grid;place-items:center;font-size:36px}
+.sent h3{font-size:38px}
+.sent p{color:var(--ink-2);margin-top:12px}
+
+/* ===== footer ===== */
+footer{background:var(--forest-2);color:var(--cream);padding:110px 0 36px;position:relative;overflow:hidden}
+.f-big{font-family:var(--display);font-size:clamp(60px,11vw,180px);line-height:.9;letter-spacing:-.03em;display:flex;align-items:center;gap:3vw;flex-wrap:wrap}
+.f-big em{color:var(--gold-2);font-size:1.05em}
+.f-big img{width:clamp(110px,12vw,180px);border-radius:50%;box-shadow:0 0 0 6px rgba(216,178,100,.25)}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-top:80px;padding-top:50px;border-top:1px solid rgba(244,236,220,.14)}
+.f-grid h5{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-2);margin-bottom:16px;font-weight:600}
+.f-grid p,.f-grid a{display:block;color:rgba(244,236,220,.78);font-size:15px;line-height:2}
+.f-grid a:hover{color:var(--gold-2)}
+.f-base{margin-top:70px;display:flex;justify-content:space-between;font-size:13px;color:rgba(244,236,220,.5);gap:20px;flex-wrap:wrap}
+
+/* mobile floating */
+.float{position:fixed;left:50%;bottom:18px;transform:translate(-50%,140%);z-index:60;display:none;gap:8px;background:var(--ink);padding:8px;border-radius:999px;box-shadow:0 20px 40px -10px rgba(0,0,0,.5);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.float.show{transform:translate(-50%,0)}
+.float a{padding:13px 20px;border-radius:999px;font-weight:600;font-size:14px;color:var(--cream);white-space:nowrap}
+.float a.g{background:var(--gold);color:#fff}
+
+/* ===== responsive ===== */
+@media (max-width:1060px){
+  .links,.nav-cta .tel{display:none}
+  .burger{display:flex}
+  .hero .wrap,.svc-grid,.ryan .wrap,.area .wrap,.book .wrap,.why .head,.pack .top{grid-template-columns:1fr}
+  .arch{justify-self:center;margin-top:30px;width:min(440px,84vw)}
+  .pillars{grid-template-columns:1fr 1fr}
+  .pillar:nth-child(2){transform:none}
+  .svc-photo{position:relative;top:0;max-width:440px;aspect-ratio:1}
+  .pack .stage{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .quote-stage{grid-template-columns:1fr}
+  .q-nav{align-items:start}
+  .float{display:flex}
+}
+@media (max-width:680px){
+  body{font-size:16px}
+  .topbar .tb-r a:not(:first-child){display:none}
+  .topbar .wrap{font-size:12px}
+  .brand b{font-size:21px}.brand img{width:48px;height:48px}
+  .nav-cta .btn{display:none}
+  .hero{padding-top:30px}
+  .arch .crest{width:110px;height:110px;left:-14px;bottom:20px}
+  .arch .spin,.arch .spin-c{right:-10px;top:10px;width:100px;height:100px}
+  .proof{gap:20px}.proof div b{font-size:30px}
+  .pillars{grid-template-columns:1fr}
+  .why,.services,.gallery,.ryan,.pack,.reviews,.area,.book{padding:90px 0}
+  .row{grid-template-columns:1fr}
+  form.req{padding:30px 22px}
+  .memory{grid-template-columns:1fr;padding:30px;gap:20px}
+  .gallery .head{flex-direction:column;align-items:start}
+  .ryan .pics .yrs{left:0;width:120px;height:120px}
+  .pup-card{padding:30px}
+  .pup-body h3{font-size:48px}
+  .menu-item{grid-template-columns:40px 1fr auto}
+  .f-grid{grid-template-columns:1fr}
+}
+</style>
+<meta name="ext-resource-dependency" content="../assets/p11.jpg" data-resource-id="p11" />
+<meta name="ext-resource-dependency" content="../assets/p54.jpg" data-resource-id="p54" />
+<meta name="ext-resource-dependency" content="../assets/p22.jpg" data-resource-id="p22" />
+<meta name="ext-resource-dependency" content="../assets/p24.jpg" data-resource-id="p24" />
+<meta name="ext-resource-dependency" content="../assets/p51.jpg" data-resource-id="p51" />
+<meta name="ext-resource-dependency" content="../assets/p06.jpg" data-resource-id="p06" />
+<meta name="ext-resource-dependency" content="../assets/p34.jpg" data-resource-id="p34" />
+<meta name="ext-resource-dependency" content="../assets/p38.jpg" data-resource-id="p38" />
+<meta name="ext-resource-dependency" content="../assets/p48.jpg" data-resource-id="p48" />
+<meta name="ext-resource-dependency" content="../assets/p26.jpg" data-resource-id="p26" />
+<meta name="ext-resource-dependency" content="../assets/p52.jpg" data-resource-id="p52" />
+<meta name="ext-resource-dependency" content="../assets/p40.jpg" data-resource-id="p40" />
+<meta name="ext-resource-dependency" content="../assets/p32.jpg" data-resource-id="p32" />
+<meta name="ext-resource-dependency" content="../assets/p07.jpg" data-resource-id="p07" />
+<meta name="ext-resource-dependency" content="../assets/p56.jpg" data-resource-id="p56" />
+<meta name="ext-resource-dependency" content="../assets/p50.jpg" data-resource-id="p50" />
+<meta name="ext-resource-dependency" content="../assets/p35.jpg" data-resource-id="p35" />
+<meta name="ext-resource-dependency" content="../assets/p53.jpg" data-resource-id="p53" />
+<meta name="ext-resource-dependency" content="../assets/p27.jpg" data-resource-id="p27" />
+<meta name="ext-resource-dependency" content="../assets/p55.jpg" data-resource-id="p55" />
+<meta name="ext-resource-dependency" content="../assets/p49.jpg" data-resource-id="p49" />
+<meta name="ext-resource-dependency" content="../assets/p30.jpg" data-resource-id="p30" />
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#25402d"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#25402d"/><circle cx="200" cy="200" r="120" fill="none" stroke="#d8b264" stroke-width="6"/><circle cx="200" cy="200" r="96" fill="#f4ecdc"/></svg></template>
+
+<div class="topbar">
+  <div class="wrap">
+    <div id="openNow"><span class="dot"></span>By appointment only · Seymour, CT</div>
+    <div class="tb-r">
+      <a href="tel:+12033053195">(203) 305-3195</a>
+      <a href="/cdn-cgi/l/email-protection#e286978c898c868d85918196a2858f838b8ecc818d8f"><span class="__cf_email__" data-cfemail="8beffee5e0e5efe4ecf8e8ffcbece6eae2e7a5e8e4e6">[email&#160;protected]</span></a>
+      <a href="https://www.instagram.com/dunkndogs_ct" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/dunkndogs_ct" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</div>
+
+<nav class="main" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <img src="../assets/crest.png" alt="Dunk'N Dogs crest">
+      <span><b>Dunk'N Dogs</b><small>Mobile Grooming</small></span>
+    </a>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Happy Pups</a>
+      <a href="#ryan">Meet Ryan</a>
+      <a href="#pack">The Pack</a>
+      <a href="#area">Service Area</a>
+    </div>
+    <div class="nav-cta">
+      <a class="tel" href="tel:+12033053195">(203) 305-3195</a>
+      <a class="btn btn-gold" href="#book">Request a Groom <span class="arr">→</span></a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="drawer" id="drawer">
+  <button class="x" id="dx" aria-label="Close">×</button>
+  <a href="#services">Services</a>
+  <a href="#gallery">Happy Pups</a>
+  <a href="#ryan">Meet Ryan</a>
+  <a href="#pack">The Pack</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#area">Service Area</a>
+  <a href="#book" style="color:var(--gold-2)">Request a Groom →</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top" data-screen-label="Hero">
+  <div class="hero-blob"></div>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow rv">Mobile dog grooming · Seymour, Connecticut</div>
+      <h1 style="margin-top:22px">
+        <span class="ln"><span>A calmer groom,</span></span>
+        <span class="ln"><span><em>right in</em></span></span>
+        <span class="ln"><span>your driveway.</span></span>
+      </h1>
+      <p class="lede rv d2">One dog at a time. No cages, no busy salon, no long waits. Just patient, one-on-one care from a groomer with nearly 20 years at the table.</p>
+      <div class="ctas rv d3">
+        <a class="btn btn-gold" href="#book">Request an appointment <span class="arr">→</span></a>
+        <a class="btn btn-line" href="tel:+12033053195">Call (203) 305-3195</a>
+      </div>
+      <div class="proof rv d3">
+        <div><b>~20</b><span>years grooming</span></div>
+        <div><b>5.0</b><span class="stars">★★★★★</span><br><span>Google reviews</span></div>
+        <div><b>1:1</b><span>one dog at a time</span></div>
+      </div>
+    </div>
+
+    <div class="arch rv d1">
+      <div class="outline"></div>
+      <div class="frame" id="heroFrame">
+        <img src="../assets/p11.jpg" alt="Freshly groomed ruby Cavalier King Charles Spaniel" class="on">
+        <img src="../assets/p54.jpg" alt="Happy black and white dog after grooming in the van">
+        <img src="../assets/p30.jpg" alt="Cavalier in a paw-print bandana">
+        <img src="../assets/p51.jpg" alt="Freshly trimmed doodle">
+        <img src="../assets/p27.jpg" alt="Tri-color Cavalier on the grooming table">
+        <div class="pips" id="heroPips"></div>
+      </div>
+      <img class="crest" src="../assets/crest.png" alt="">
+      <svg class="spin" viewBox="0 0 132 132" aria-hidden="true">
+        <defs><path id="circ" d="M66,66 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs>
+        <text><textPath href="#circ">We come to you · Cage-free · All breeds ·</textPath></text>
+      </svg>
+      <div class="spin-c">✦</div>
+    </div>
+  </div>
+</header>
+
+<div class="ribbon" aria-hidden="true">
+  <div class="track" id="track">
+    <span>Cage-free grooming</span><span><em>one dog at a time</em></span><span>All breeds welcome</span><span>We come to you</span><span><em>patience &amp; kindness</em></span><span>Certified professional</span>
+  </div>
+</div>
+
+<!-- WHY MOBILE -->
+<section class="why" id="why" data-screen-label="Why mobile">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="eyebrow rv">Why mobile</div>
+        <h2 class="rv d1" style="margin-top:20px">Grooming should feel <em>safe</em>, not stressful.</h2>
+      </div>
+      <p class="rv d2">After years working in the grooming industry, Ryan built Dunk'N Dogs around a simple belief: grooming should be a calm, one-on-one experience. The salon comes to your door, so your dog never has to wait their turn.</p>
+    </div>
+    <div class="pillars">
+      <article class="pillar rv">
+        <div class="ph"><img src="../assets/p10.jpg" alt="Cavalier sitting calmly in the grooming van"></div>
+        <div class="tx"><span class="n">i.</span><h3>No cages, ever</h3><p>No crates and no holding pens. Your dog stays with the groomer from start to finish.</p></div>
+      </article>
+      <article class="pillar rv d1">
+        <div class="ph"><img src="../assets/p09.jpg" alt="Two dogs wrapped in towels after a bath"></div>
+        <div class="tx"><span class="n">ii.</span><h3>Just one pup</h3><p>Each appointment is focused on one dog at a time, so they get the patience and attention they deserve.</p></div>
+      </article>
+      <article class="pillar rv d2">
+        <div class="ph"><img src="../assets/p49.jpg" alt="Small dog on the table inside the mobile grooming van"></div>
+        <div class="tx"><span class="n">iii.</span><h3>Right at home</h3><p>No drop-offs, no long waits, no car rides. The fully equipped van parks in your driveway.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services" data-screen-label="Services">
+  <div class="deco"></div>
+  <div class="wrap">
+    <div class="eyebrow rv">The grooming menu</div>
+    <h2 class="rv d1" style="margin-top:20px;max-width:880px">Nose to tail, <em>tailored</em> to your dog.</h2>
+    <div class="svc-grid">
+      <div class="svc-photo rv" id="svcPhoto">
+        <img src="../assets/p50.jpg" alt="" class="on">
+        <img src="../assets/p20.jpg" alt="">
+        <img src="../assets/p07.jpg" alt="">
+        <img src="../assets/p06.jpg" alt="">
+        <img src="../assets/p53.jpg" alt="">
+        <img src="../assets/p55.jpg" alt="">
+        <div class="tag"><span>Tap a service to add it<br>to your request</span><b id="svcCount">0 selected</b></div>
+      </div>
+      <div>
+        <ul class="menu-list" id="menu">
+          <li class="menu-item open" data-i="0" data-k="Bath"><span class="no">01</span><h3>The Bath</h3><span class="pick">+</span><p>A proper wash with high-quality products, chosen for your dog's coat and skin, then dried off and finished in the van.</p></li>
+          <li class="menu-item" data-i="1" data-k="Full body haircut"><span class="no">02</span><h3>Full-Body Haircut</h3><span class="pick">+</span><p>Every style is talked through with you first. Ryan works to your specifications so there are no surprises when your pup hops out.</p></li>
+          <li class="menu-item" data-i="2" data-k="De-shed"><span class="no">03</span><h3>De-Shed</h3><span class="pick">+</span><p>Loose undercoat lifted out so your dog stays lighter and comfier, and your couch stays a little cleaner.</p></li>
+          <li class="menu-item" data-i="3" data-k="Nail trimming"><span class="no">04</span><h3>Nail Trimming</h3><span class="pick">+</span><p>Neat, comfortable nails, trimmed with patience for dogs who aren't fans of the clippers.</p></li>
+          <li class="menu-item" data-i="4" data-k="Ear cleaning"><span class="no">05</span><h3>Ear Cleaning</h3><span class="pick">+</span><p>Gentle ear care to keep ears fresh and comfortable, which matters most for long-eared breeds like Cavaliers and doodles.</p></li>
+          <li class="menu-item" data-i="5" data-k="Mouth wash"><span class="no">06</span><h3>Mouth Washing</h3><span class="pick">+</span><p>A quick freshen-up so the after-groom snuggles smell as good as they look.</p></li>
+        </ul>
+        <div class="svc-foot rv">
+          <div class="q"><b>Pricing is tailored.</b> Every quote depends on your dog's breed, coat and the style you want. Reach out and Ryan will give you yours.</div>
+          <a class="btn btn-gold" href="#book" id="svcGo">Request these <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery" data-screen-label="Gallery">
+  <div class="wrap head">
+    <div>
+      <div class="eyebrow rv">Fresh off the table</div>
+      <h2 class="rv d1" style="margin-top:20px">Some of our <em>happy</em> pups.</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px;align-items:flex-start">
+      <p class="rv d2">Every photo was taken by Ryan inside the van, moments after the groom. Drag to browse, or tap a photo to see it bigger.</p>
+      <div class="g-ctrl rv d2"><button id="gPrev" aria-label="Previous">←</button><button id="gNext" aria-label="Next">→</button></div>
+    </div>
+  </div>
+  <div class="strip" id="strip"></div>
+  <div class="wrap g-note">
+    <span>Photography © Ryan Davis · Dunk'N Dogs Mobile Grooming</span>
+    <a href="https://www.instagram.com/dunkndogs_ct" target="_blank" rel="noopener">See more on Instagram @dunkndogs_ct →</a>
+  </div>
+</section>
+<div class="lb" id="lb"><button class="lx" aria-label="Close">×</button><button class="lp" aria-label="Previous">←</button><img alt=""><button class="ln2" aria-label="Next">→</button></div>
+
+<!-- RYAN -->
+<section class="ryan" id="ryan" data-screen-label="Meet Ryan">
+  <div class="wrap">
+    <div class="pics rv">
+      <div class="a"><img src="../assets/p20.jpg" alt="The Dunk'N Dogs pack: five Cavaliers in bandanas"></div>
+      <div class="b"><img src="../assets/p36.jpg" alt="Cavalier playing in the snow"></div>
+      <div class="yrs"><div><b>20</b><span>Years of<br>grooming</span></div></div>
+    </div>
+    <div class="body">
+      <div class="eyebrow rv">The groomer</div>
+      <div class="hello rv d1">Hi, I'm Ryan,</div>
+      <h2 class="rv d1">owner &amp; groomer of Dunk'N Dogs.</h2>
+      <p class="rv d2">I've been grooming dogs for nearly 20 years and have always believed grooming should be a calm, one-on-one experience for pets. After years in the industry, I had the chance to start my own mobile business so I could offer dogs a more comfortable, low-stress groom right at home.</p>
+      <p class="rv d2">Skilled with all kinds of breeds, I'm happy to work to your specifications and talk through styles with you, so you never get a surprising result.</p>
+      <blockquote class="rv d3">“Treat every dog with the same care, patience, love, and kindness I would want for my own.”</blockquote>
+      <div class="sig rv d3"><em>Ryan Davis</em>Owner · Certified professional groomer</div>
+    </div>
+  </div>
+</section>
+
+<!-- PACK -->
+<section class="pack" id="pack" data-screen-label="The pack">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="eyebrow rv">Meet the mascots</div>
+        <h2 class="rv d1" style="margin-top:20px">The Dunk'N Dogs <em>family.</em></h2>
+      </div>
+      <p class="rv d2">At home, Ryan shares life with her children, four Cavalier King Charles Spaniels and one senior long-haired Chihuahua. They're the quality-control team.</p>
+    </div>
+    <div class="stage">
+      <div class="photo rv"><img src="../assets/p20.jpg" alt="The Dunk'N Dogs Cavaliers"><span class="cap">The pack, in their bandana best</span></div>
+      <div class="pup-card rv d1">
+        <div class="pup-tabs" id="pupTabs"></div>
+        <div class="pup-body" id="pupBody"></div>
+      </div>
+    </div>
+    <div class="memory rv">
+      <div class="heart">D</div>
+      <div>
+        <h3>In loving memory of <em>Dublin</em></h3>
+        <p>A playful, goofy soul who helped inspire the Dunk'N Dogs name and spirit. Always on the hunt for snacks, quick to sound the alarm as household watchdog, and happiest lying right on top of his people. He will always be part of the pack.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews" data-screen-label="Reviews">
+  <div class="bigq">”</div>
+  <div class="wrap">
+    <div class="rv-top">
+      <div>
+        <div class="eyebrow rv">Kind words</div>
+        <h2 class="rv d1" style="margin-top:20px">Loved by pups <em>&amp;</em> their people.</h2>
+      </div>
+      <div class="score rv d2"><b>5.0</b><div><span class="stars">★★★★★</span><br>Across 6 reviews<br>on Google</div></div>
+    </div>
+    <div class="quote-stage">
+      <div class="quote" id="quote"></div>
+      <div class="q-nav">
+        <div class="q-dots" id="qDots"></div>
+        <div class="q-btns"><button id="qPrev" aria-label="Previous review">←</button><button id="qNext" aria-label="Next review">→</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREA -->
+<section class="area" id="area" data-screen-label="Service area">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow rv">Where we groom</div>
+      <h2 class="rv d1" style="margin-top:20px">Based in Seymour, <em>rolling</em> to you.</h2>
+      <p class="rv d2">The van covers the Naugatuck Valley, Fairfield County and northern Westchester. Don't see your town? Just ask.</p>
+      <div class="checker rv d3">
+        <label for="town">Is my town covered?</label>
+        <div class="field"><input id="town" placeholder="Type your town, e.g. Shelton" autocomplete="off"></div>
+        <div class="res" id="townRes"></div>
+      </div>
+    </div>
+    <div class="regions" id="regions"></div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="book" id="book" data-screen-label="Request appointment">
+  <div class="wrap">
+    <div class="side">
+      <div class="eyebrow rv">Request a groom</div>
+      <h2 class="rv d1" style="margin-top:20px">Let's get your pup <em>on the route.</em></h2>
+      <p class="rv d2">Grooming is by appointment only. Tell us a little about your dog and Ryan will be in touch to find a time and give you a quote.</p>
+      <div class="facts rv d2">
+        <div class="fact"><i>☏</i><a href="tel:+12033053195">(203) 305-3195</a></div>
+        <div class="fact"><i>✉</i><a href="/cdn-cgi/l/email-protection#6400110a0f0a000b03170710240309050d084a070b09"><span class="__cf_email__" data-cfemail="86e2f3e8ede8e2e9e1f5e5f2c6e1ebe7efeaa8e5e9eb">[email&#160;protected]</span></a></div>
+        <div class="fact"><i>✦</i><span>Debit &amp; credit cards accepted</span></div>
+      </div>
+      <div class="hours rv d3">
+        <h4>Grooming days</h4>
+        <ul id="hours"></ul>
+      </div>
+    </div>
+
+    <form class="req rv d1" id="req" novalidate>
+      <div id="formBody">
+        <h3>Tell us about your pup</h3>
+        <p class="sub">Takes about a minute. We'll reply by phone or email.</p>
+        <div class="row">
+          <div class="fld"><label for="f-name">Your name</label><input id="f-name" required></div>
+          <div class="fld"><label for="f-phone">Phone</label><input id="f-phone" type="tel" required></div>
+        </div>
+        <div class="row">
+          <div class="fld"><label for="f-email">Email</label><input id="f-email" type="email"></div>
+          <div class="fld"><label for="f-town">Town</label><input id="f-town" list="townList"></div>
+        </div>
+        <div class="row">
+          <div class="fld"><label for="f-dog">Dog's name</label><input id="f-dog"></div>
+          <div class="fld"><label for="f-breed">Breed &amp; approx. size</label><input id="f-breed" placeholder="e.g. Goldendoodle, 55 lbs"></div>
+        </div>
+        <div class="row">
+          <div class="fld full"><label>Services you're interested in</label>
+            <div class="chips" id="chips"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="fld full"><label for="f-msg">Anything we should know?</label><textarea id="f-msg" placeholder="Coat condition, the style you'd like, nerves, senior needs…"></textarea></div>
+        </div>
+        <div class="go">
+          <small>Sending opens your email app with everything filled in, ready to go to Ryan.</small>
+          <button class="btn btn-gold" type="submit">Send request <span class="arr">→</span></button>
+        </div>
+      </div>
+      <div class="sent" id="sent">
+        <div class="tick">✓</div>
+        <h3>Almost there!</h3>
+        <p>Your email app should open with the request ready to send.<br>Prefer to talk? Call <a href="tel:+12033053195" style="font-weight:600">(203) 305-3195</a>.</p>
+        <button type="button" class="btn btn-line" style="margin-top:24px" id="again">Edit request</button>
+      </div>
+      <datalist id="townList"></datalist>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-big"><span>Fresh pups,</span><img src="../assets/crest.png" alt=""><em>delivered.</em></div>
+    <div class="f-grid">
+      <div>
+        <h5>Dunk'N Dogs Mobile Grooming LLC</h5>
+        <p>Calm, cage-free, one-on-one mobile dog grooming. Based in Seymour, Connecticut.</p>
+      </div>
+      <div><h5>Contact</h5><a href="tel:+12033053195">(203) 305-3195</a><a href="/cdn-cgi/l/email-protection#771302191c1913181004140337101a161e1b5914181a"><span class="__cf_email__" data-cfemail="0b6f7e6560656f646c78687f4b6c666a626725686466">[email&#160;protected]</span></a></div>
+      <div><h5>Explore</h5><a href="#services">Services</a><a href="#gallery">Happy Pups</a><a href="#pack">The Pack</a><a href="#area">Service Area</a></div>
+      <div><h5>Follow</h5><a href="https://www.instagram.com/dunkndogs_ct" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/dunkndogs_ct" target="_blank" rel="noopener">Facebook</a></div>
+    </div>
+    <div class="f-base"><span>© <span id="yr"></span> Dunk'N Dogs Mobile Grooming LLC</span><span>By appointment only · Debit &amp; credit cards accepted</span></div>
+  </div>
+</footer>
+
+<div class="float" id="float"><a href="tel:+12033053195">Call</a><a class="g" href="#book">Request a Groom</a></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+$('#yr').textContent=new Date().getFullYear();
+
+/* nav */
+const nav=$('#nav'), flt=$('#float');
+addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>20);flt.classList.toggle('show',scrollY>700)},{passive:true});
+$('#burger').onclick=()=>$('#drawer').classList.add('open');
+$('#dx').onclick=()=>$('#drawer').classList.remove('open');
+$$('#drawer a').forEach(a=>a.onclick=()=>$('#drawer').classList.remove('open'));
+const secs=['services','gallery','ryan','pack','area'].map(id=>document.getElementById(id));
+addEventListener('scroll',()=>{let cur='';secs.forEach(s=>{if(s.getBoundingClientRect().top<200)cur=s.id});$$('.links a').forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+cur))},{passive:true});
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+$$('.rv').forEach(el=>io.observe(el));
+
+/* ribbon duplicate */
+const tr=$('#track'); tr.innerHTML+=tr.innerHTML;
+
+/* hero rotator */
+const hImgs=$$('#heroFrame img'), pips=$('#heroPips'); let hi=0, ht;
+hImgs.forEach((_,i)=>{const p=document.createElement('i');p.onclick=()=>{go(i);clearInterval(ht);ht=setInterval(nx,4800)};pips.appendChild(p)});
+function go(i){hImgs[hi].classList.remove('on');pips.children[hi].classList.remove('on');hi=i;hImgs[hi].classList.add('on');pips.children[hi].classList.add('on')}
+const nx=()=>go((hi+1)%hImgs.length); go(0); ht=setInterval(nx,4800);
+
+/* hours + open state */
+const H=[['Sunday',null],['Monday','8:00 AM – 5:00 PM'],['Tuesday',null],['Wednesday',null],['Thursday','8:00 AM – 5:00 PM'],['Friday','8:00 AM – 5:00 PM'],['Saturday','8:00 AM – 6:00 PM']];
+const today=new Date().getDay();
+$('#hours').innerHTML=[1,2,3,4,5,6,0].map(d=>`<li class="${H[d][1]?'':'closed'} ${d===today?'today':''}"><span>${H[d][0]}</span><span>${H[d][1]||'Closed'}</span></li>`).join('');
+(()=>{const n=new Date(),h=n.getHours()+n.getMinutes()/60,end=today===6?18:17,open=H[today][1]&&h>=8&&h<end;
+$('#openNow').innerHTML=`<span class="dot ${open?'':'off'}"></span>${open?'On the road today · By appointment only':'By appointment only · Seymour, CT'}`})();
+
+/* services */
+const sel=new Set(); const svcImgs=$$('#svcPhoto img');
+$$('.menu-item').forEach(li=>{
+  li.addEventListener('mouseenter',()=>{svcImgs.forEach((im,i)=>im.classList.toggle('on',i==li.dataset.i))});
+  li.onclick=()=>{
+    const wasOpen=li.classList.contains('open');
+    $$('.menu-item').forEach(x=>x.classList.remove('open')); li.classList.add('open');
+    svcImgs.forEach((im,i)=>im.classList.toggle('on',i==li.dataset.i));
+    if(wasOpen||sel.has(li.dataset.k)){ sel.has(li.dataset.k)?sel.delete(li.dataset.k):sel.add(li.dataset.k) } else sel.add(li.dataset.k);
+    syncSvc();
+  };
+});
+function syncSvc(){
+  $$('.menu-item').forEach(x=>{const on=sel.has(x.dataset.k);x.classList.toggle('sel',on);x.querySelector('.pick').textContent=on?'✓':'+'});
+  $('#svcCount').textContent=sel.size+' selected';
+  $$('#chips input').forEach(c=>c.checked=sel.has(c.value));
+}
+const SV=['Bath','Full body haircut','De-shed','Nail trimming','Ear cleaning','Mouth wash'];
+$('#chips').innerHTML=SV.map(s=>`<label><input type="checkbox" value="${s}"><span>${s}</span></label>`).join('');
+$$('#chips input').forEach(c=>c.onchange=()=>{c.checked?sel.add(c.value):sel.delete(c.value);syncSvc()});
+
+/* gallery */
+const G=['p11','p54','p22','p24','p51','p06','p34','p38','p48','p26','p52','p40','p32','p07','p56','p50','p35','p53','p27','p55','p49','p30'];
+const strip=$('#strip'); const SRC=g=>(window.__resources&&window.__resources[g])||`../assets/${g}.jpg`;
+strip.innerHTML=G.map((g,i)=>`<div class="shot" data-i="${i}"><img src="${SRC(g)}" alt="Freshly groomed dog" loading="lazy" draggable="false"></div>`).join('');
+let down=false,sx=0,sl=0,moved=0;
+strip.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=0;sx=e.clientX;sl=strip.scrollLeft;strip.classList.add('drag')});
+addEventListener('pointermove',e=>{if(!down)return;const d=e.clientX-sx;moved=Math.max(moved,Math.abs(d));strip.scrollLeft=sl-d});
+addEventListener('pointerup',()=>{down=false;strip.classList.remove('drag')});
+const step=()=>strip.querySelector('.shot').offsetWidth+22;
+$('#gNext').onclick=()=>strip.scrollBy({left:step()*2,behavior:'smooth'});
+$('#gPrev').onclick=()=>strip.scrollBy({left:-step()*2,behavior:'smooth'});
+const lb=$('#lb'),lbi=lb.querySelector('img'); let li_=0;
+const show=i=>{li_=(i+G.length)%G.length;lbi.src=SRC(G[li_])};
+strip.addEventListener('click',e=>{const s=e.target.closest('.shot');if(!s||moved>6)return;show(+s.dataset.i);lb.classList.add('open')});
+lb.querySelector('.lx').onclick=()=>lb.classList.remove('open');
+lb.querySelector('.lp').onclick=()=>show(li_-1);
+lb.querySelector('.ln2').onclick=()=>show(li_+1);
+lb.onclick=e=>{if(e.target===lb)lb.classList.remove('open')};
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowRight')show(li_+1);if(e.key==='ArrowLeft')show(li_-1)});
+
+/* pack */
+const P=[
+ {n:'Wrangler',b:'Senior long-haired Chihuahua',t:'The wise old man of the pack',d:"Wrangler still has plenty of spunk and playfulness. People are often surprised to learn he's a Chihuahua because he's so friendly, outgoing, and happy to soak up attention."},
+ {n:'Freya',b:'Cavalier King Charles Spaniel',t:'Diva of the house',d:"Elegant and very observant, Freya keeps a close eye on everything happening around her. She enjoys going on patrol with Mila to make sure nothing suspicious is happening outside."},
+ {n:'Mila',b:'Cavalier King Charles Spaniel',t:'Sweet, gentle, on guard',d:"Mila has a calm personality and a way of melting hearts with a single look. But she's also the watchdog of the house, barking at the TV, the windows, and anything that dares pass by outside."},
+ {n:'Nora',b:'Cavalier King Charles Spaniel',t:'Chief treat locator',d:"Goofy, lovable, and always on the hunt for snacks, Nora keeps everyone entertained with her personality and her impressive talent for finding treats no matter where they're hiding."},
+ {n:'Clover',b:'Cavalier King Charles Spaniel',t:'Biggest cuddle bug',d:"The youngest of the pack and the smallest Cavalier. Clover is playful, curious and full of energy, always looking to snuggle up or burrow under the blankets."}
+];
+let pi=0;
+$('#pupTabs').innerHTML=P.map((p,i)=>`<button data-i="${i}">${p.n}</button>`).join('');
+function pup(i){pi=i;$$('#pupTabs button').forEach((b,j)=>b.classList.toggle('on',j===i));const p=P[i],el=$('#pupBody');el.classList.remove('swap');void el.offsetWidth;el.classList.add('swap');
+ el.innerHTML=`<span class="breed">${p.b}</span><h3>${p.n}</h3><p>${p.d}</p><div class="trait">${p.t}</div>`}
+$$('#pupTabs button').forEach(b=>b.onclick=()=>pup(+b.dataset.i)); pup(0);
+
+/* reviews */
+const R=[
+ {n:'Jennifer Palmer',d:'June 2026',q:"Ryan has been grooming my Bernedoodle, Ziggy, for 7 years! Ziggy is an anxious dog, but he is totally comfortable with Ryan and jumps right in the van. She is professional, patient and truly cares about the dogs she works with."},
+ {n:'Brian Kelly',d:'April 2026',q:"Ryan did a phenomenal job with my golden doodle. So convenient, fast and stress free for my pup. Highly recommend."},
+ {n:'Kathleen Custis',d:'March 2026',q:"Ryan is THE best! Our two dogs are nervous and can be a handful. Ryan is always patient and completely understands their needs. I always know they are in great hands with her!"},
+ {n:"Lyubov D'Souza",d:'March 2026',q:"From the moment she arrives, it's clear how much care and attention she puts into her work. Coco comes home looking absolutely adorable every time, and just as importantly, she's always happy and comfortable."},
+ {n:'Leza Miller',d:'March 2026',q:"Ryan is amazing. Harper my Akita is always excited to see her and looks fantastic once she's finished."},
+ {n:'Amanda Geitz',d:'March 2026',q:"The convenience of having grooming done right in the driveway is amazing, but what really stands out is the care and attention she gives to our dog. Our dog always comes back looking fantastic: perfectly groomed, soft, and happy."}
+];
+let qi=0,qt; const qd=$('#qDots');
+qd.innerHTML=R.map((_,i)=>`<i data-i="${i}"></i>`).join('');
+function quote(i){qi=(i+R.length)%R.length;const r=R[qi],el=$('#quote');el.classList.remove('swap');void el.offsetWidth;el.classList.add('swap');
+ el.innerHTML=`<blockquote>${r.q}</blockquote><div class="who"><span class="av">${r.n[0]}</span><div><b>${r.n}</b><small>★★★★★ · Google review · ${r.d}</small></div></div>`;
+ [...qd.children].forEach((d,j)=>{d.classList.remove('on','done');if(j<qi)d.classList.add('done')});void qd.offsetWidth;qd.children[qi].classList.add('on');
+ clearTimeout(qt);qt=setTimeout(()=>quote(qi+1),8000)}
+[...qd.children].forEach(d=>d.onclick=()=>quote(+d.dataset.i));
+$('#qPrev').onclick=()=>quote(qi-1);$('#qNext').onclick=()=>quote(qi+1);
+quote(0);
+
+/* area */
+const A=[
+ {r:'Naugatuck Valley',s:'Home base',home:true,t:['Ansonia','Beacon Falls','Derby','Oxford','Seymour','Shelton','Southbury']},
+ {r:'Fairfield County',s:'Connecticut',t:['Bethel','Darien','Easton','Fairfield','Greenwich','Monroe','New Canaan','Newtown','Norwalk','Redding','Ridgefield','Stamford','Trumbull','Weston','Westport','Wilton']},
+ {r:'Westchester County',s:'New York',t:['Bedford','Bedford Hills','Chappaqua','Katonah','Lewisboro','Mount Kisco','North Salem','Pound Ridge','South Salem']}
+];
+$('#regions').innerHTML=A.map(a=>`<div class="region ${a.home?'home':''} rv"><div class="rh"><h3>${a.r}</h3><span class="ct">${a.s}</span></div><div class="towns">${a.t.map(t=>`<span class="${t==='Seymour'?'base':''}">${t}</span>`).join('')}</div></div>`).join('');
+$$('#regions .rv').forEach(el=>io.observe(el));
+$('#townList').innerHTML=A.flatMap(a=>a.t).map(t=>`<option value="${t}">`).join('');
+$('#town').addEventListener('input',e=>{
+  const v=e.target.value.trim().toLowerCase(),res=$('#townRes');
+  $$('.towns span').forEach(s=>s.classList.remove('hit'));
+  if(v.length<2){res.textContent='';res.className='res';return}
+  const hits=$$('.towns span').filter(s=>s.textContent.toLowerCase().startsWith(v));
+  hits.forEach(s=>s.classList.add('hit'));
+  const exact=hits.find(s=>s.textContent.toLowerCase()===v);
+  if(exact||hits.length===1){res.className='res yes';res.textContent=`✓ Yes, ${(exact||hits[0]).textContent} is on the route. Let's get you booked.`}
+  else if(hits.length){res.className='res maybe';res.textContent=`${hits.length} matching towns highlighted →`}
+  else{res.className='res maybe';res.innerHTML=`Not on the list yet, but don't hesitate to ask. <a href="#book" style="font-weight:600;border-bottom:1.5px solid var(--gold)">Send a request →</a>`}
+});
+
+/* form → mailto */
+$('#req').addEventListener('submit',e=>{
+  e.preventDefault();
+  const g=id=>$('#'+id).value.trim(), name=g('f-name'), phone=g('f-phone');
+  let ok=true;[['f-name',name],['f-phone',phone]].forEach(([id,v])=>{$('#'+id).style.borderColor=v?'':'#c0573e';if(!v)ok=false});
+  if(!ok)return;
+  const body=`Hi Ryan,\n\nI'd like to request a grooming appointment.\n\nName: ${name}\nPhone: ${phone}\nEmail: ${g('f-email')}\nTown: ${g('f-town')}\n\nDog's name: ${g('f-dog')}\nBreed / size: ${g('f-breed')}\nServices: ${[...sel].join(', ')||'Not sure yet'}\n\nNotes: ${g('f-msg')}\n`;
+  location.href=`mailto:dunkndogsct@gmail.com?subject=${encodeURIComponent('Grooming request'+(g('f-dog')?' for '+g('f-dog'):''))}&body=${encodeURIComponent(body)}`;
+  $('#formBody').style.display='none';$('#sent').classList.add('on');
+});
+$('#again').onclick=()=>{$('#formBody').style.display='';$('#sent').classList.remove('on')};
+</script>
+</body>
+</html>
